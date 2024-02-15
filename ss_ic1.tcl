@@ -42,3 +42,12 @@ uniaxialMaterial  Elastic                   3       2280
 
 ## beam CONCRETE                            tag     f'c       ec0      f'cu      ecu
 uniaxialMaterial  Concrete01                4      -5.76     -0.002     0      -0.006
+
+## STEEL rebar
+## STEEL02                                  tag     $Fy       $E       $b        $cR1   $cR2     $a1      $a2       $a3     $a4
+uniaxialMaterial  Steel02                   5       65.0      29000   0.02       18.5   0.925    0.04     1.0       0.04    1.0
+uniaxialMaterial  Steel02                   6       62.8      29000   0.02       18.5   0.925    0.00     1.0       0.00    1.0
+uniaxialMaterial  Elastic                  7       29000
+
+# uniaxialMaterial  StrPen01                $Tag    $sy       $fy       $su     $fu      $Kz     $Cd      $db       $fc     $la
+uniaxialMaterial  StrPen01                  400     0.02      65        0.7     97.5     0.50    0.0      1.0       4.35    25.0
