@@ -23,3 +23,10 @@ node 10 40.0                0.0
 node 11 61.5                0.0
 node 12 84.0                0.0
 node 13 12.0                0.0
+
+# Fix supports at base of column
+#      Tag DX    DY              RZ
+fix    1    1    1               0
+fix    7    1    0               0
+# equalDOF $rNodeTag  $cNodeTag  $dof1 $dof2
+equalDOF 8 13 2
