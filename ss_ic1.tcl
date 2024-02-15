@@ -30,3 +30,12 @@ fix    1    1    1               0
 fix    7    1    0               0
 # equalDOF $rNodeTag  $cNodeTag  $dof1 $dof2
 equalDOF 8 13 2
+
+# Define materials for nonlinear columns
+## column Core    CONCRETE                 tag     f'c       ec0      f'cu      ecu
+uniaxialMaterial  Concrete01                1      -6.38     -0.004   -5.11    -0.014
+uniaxialMaterial  Concrete01                200    -6.38     -0.004   -5.11    -0.014
+## column Cover    CONCRETE                 tag     f'c       ec0      f'cu      ecu
+uniaxialMaterial  Concrete01                2      -4.56     -0.002    0.0     -0.006
+## column stub CONCRETE                     tag     E
+uniaxialMaterial  Elastic                   3       2280
