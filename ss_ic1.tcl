@@ -39,3 +39,6 @@ uniaxialMaterial  Concrete01                200    -6.38     -0.004   -5.11    -
 uniaxialMaterial  Concrete01                2      -4.56     -0.002    0.0     -0.006
 ## column stub CONCRETE                     tag     E
 uniaxialMaterial  Elastic                   3       2280
+
+## beam CONCRETE                            tag     f'c       ec0      f'cu      ecu
+uniaxialMaterial  Concrete01                4      -5.76     -0.002     0      -0.006
