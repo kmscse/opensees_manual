@@ -132,3 +132,21 @@ element dispBeamColumn         10      10     11      $np      1          1
 element dispBeamColumn         11      11     12      $np      1          1
 #   zeroLengthSection          tag     ndl    ndJ      secID
 element zeroLengthSection      12      8      13       5
+
+# Set up and perform analysis
+## Create recorders
+recorder  Node  -file   topdispac.out  -time  -node  13  -dof  1   disp
+recorder  Node  -file   rot4ac.out     -time  -node  4   -dof  3   disp
+recorder  Node  -file   rot8ac.out     -time  -node  8   -dof  3   disp
+recorder  Drift drift84ac.out    4   8  2  1
+recorder  Drift curvatureac.out    8   9  3  1
+recorder  Drift curvatureac1.out   13  9  3  1
+recorder  Element  -file   secstrspac.out  -time  -ele  8  section 5 fiber  -$Rb  0  5  stressStrain
+recorder  Element  -file   secstrsnac.out  -time  -ele  8  section 5 fiber   $Rb  0  5  stressStrain
+recorder  Element  -file   secstrcac.out   -time  -ele  8  section 5 fiber   $Rc  0  1  stressStrain
+recorder  plot     topdispac.out  Node12_Ydisp   10   10   300   300  -columns  2  1
+
+set P -90.0
+pattern Plain  1  "Constant" {
+    load  12  $P  0.0  0.0
+}
