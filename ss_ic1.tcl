@@ -150,3 +150,14 @@ set P -90.0
 pattern Plain  1  "Constant" {
     load  12  $P  0.0  0.0
 }
+
+# Define analysis parameters
+integrator LoadControl  0
+system SparseGeneral  -piv
+test   NormDisplncr  1.0e-4  2000
+numberer Plain
+constraints Plain
+algorithm KrylovNewton
+analysis Static
+
+
