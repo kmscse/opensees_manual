@@ -162,3 +162,11 @@ analysis Static
 
 # Do one analysis for constant axial load
 analyze 1
+
+# Define reference force
+pattern Plain 2 "Linear" {
+    load 12  0.0  1.0  0.0
+}
+
+set dU1  -0.02
+set dU2   0.02
