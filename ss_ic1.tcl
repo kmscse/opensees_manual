@@ -170,3 +170,39 @@ pattern Plain 2 "Linear" {
 
 set dU1  -0.02
 set dU2   0.02
+
+# Perform the analysis
+integrator DisplacementControl  12  2  $dU1
+analyze 33
+integrator DisplacementControl  12  2  $dU2
+analyze 65
+integrator DisplacementControl  12  2  $dU1
+analyze 32
+
+integrator DisplacementControl  12  2  $dU1
+analyze 67
+integrator DisplacementControl  12  2  $dU2
+analyze 134
+integrator DisplacementControl  12  2  $dU1
+analyze 67
+
+integrator DisplacementControl  12  2  $dU1
+analyze 101
+integrator DisplacementControl  12  2  $dU2
+analyze 202
+integrator DisplacementControl  12  2  $dU1
+analyze 101
+
+integrator DisplacementControl  12  2  $dU1
+analyze 135
+integrator DisplacementControl  12  2  $dU2
+analyze 270
+integrator DisplacementControl  12  2  $dU1
+analyze 135
+
+integrator DisplacementControl  12  2  $dU1
+analyze 202
+integrator DisplacementControl  12  2  $dU2
+analyze 404
+integrator DisplacementControl  12  2  $dU1
+analyze 202
