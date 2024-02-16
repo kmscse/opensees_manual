@@ -160,4 +160,5 @@ constraints Plain
 algorithm KrylovNewton
 analysis Static
 
-
+# Do one analysis for constant axial load
+analyze 1
