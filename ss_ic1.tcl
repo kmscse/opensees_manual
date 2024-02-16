@@ -108,3 +108,7 @@ section Fiber 3 {
     layer straight 6    7    $As     -$bb      $ab      -$bb     -$ab
     layer straight 6    7    $As      $bb      $ab       $bb     -$ab  
 }
+
+# Define column elements
+## Geometry of column elements
+geomTransf Linear 1
