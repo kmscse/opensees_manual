@@ -87,3 +87,24 @@ section Fiber 5 {
     # reinforcing fibers
     layer circ                              400     14        $As       0.0      0.0      $Rb     -90.0   244.3   
 }
+
+# Define cross-section for nonlinear cap beam
+set bmw 27;                       # bending in this direction (local and global y)
+set bmh 24;                       # bending in this direction (local and global y)
+set cover 1.38;
+set bcent 1.81;                   # [expr $cover+0.197+0.5]
+
+set aw [expr $bmw/2.0]
+set ac [expr $bmw/2.0-$cover]
+set ab [expr $bmw/2.0-$bcent]
+set bw [expr $bmh/2.0]
+set bc [expr $bmh/2.0-$cover]
+set bb [expr $bmh/2.0-$bcent]
+
+section Fiber 3 {
+    # concrete fibers
+    patch quad    4    48     1     -$bw      -$aw      $bw     -$aw     $bw      $aw     -$bw      $aw
+    # reinforcing fibers
+    layer straight 6    7    $As     -$bb      $ab      -$bb     -$ab
+    layer straight 6    7    $As      $bb      $ab       $bb     -$ab  
+}
