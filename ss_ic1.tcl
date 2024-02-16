@@ -49,5 +49,41 @@ uniaxialMaterial  Steel02                   5       65.0      29000   0.02      
 uniaxialMaterial  Steel02                   6       62.8      29000   0.02       18.5   0.925    0.00     1.0       0.00    1.0
 uniaxialMaterial  Elastic                  7       29000
 
-# uniaxialMaterial  StrPen01                $Tag    $sy       $fy       $su     $fu      $Kz     $Cd      $db       $fc     $la
-uniaxialMaterial  StrPen01                  400     0.02      65        0.7     97.5     0.50    0.0      1.0       4.35    25.0
+# uniaxialMaterial  StrPen01                $Tag    $sy       $fy       $su     $fu      $Kz     $R      $Cd      $db       $fc     $la
+uniaxialMaterial  StrPen01                  400     0.02      65        0.7     97.5     0.50    0.7     0.0      1.0       4.35    25.0
+
+# Define cross-section for nonlinear column
+set colDia 24;            # bending in this direction (local and global y)
+set cover 1.38;
+set bcent 1.81;           # [expr $cover+0.197+0.5]
+set As    0.60;           # Area of no. 7 bar
+set R [expr $colDia/2.0]
+set Rc [expr $colDia/2.0-$cover]
+set Rb [expr $colDia/2.0-$bcent]
+
+section Fiber 1 {
+    # core concrete fibers
+    patch circ                              1       70        22        0.0      0.0      0.0     $Rc     0.0      360.0
+    # concrete cover fibers
+    patch circ                              2       70        2         0.0      0.0      $Rc     $R      0.0      360.0
+    # reinforcing fibers
+    layer circ                              5       14        $As       0.0      0.0      $Rb     -90.0   244.3   
+}
+
+section Fiber 2 {
+    # core concrete fibers
+    patch circ                              3       70        22        0.0      0.0      0.0     $Rc     0.0      360.0
+    # concrete cover fibers
+    patch circ                              3       70        2         0.0      0.0      $Rc     $R      0.0      360.0
+    # reinforcing fibers
+    layer circ                              5       14        $As       0.0      0.0      $Rb     -90.0   244.3   
+}
+
+section Fiber 5 {
+    # core concrete fibers
+    patch circ                              200     70        22        0.0      0.0      0.0     $Rc     0.0      360.0
+    # concrete cover fibers
+    patch circ                              2       70        2         0.0      0.0      $Rc     $R      0.0      360.0
+    # reinforcing fibers
+    layer circ                              400     14        $As       0.0      0.0      $Rb     -90.0   244.3   
+}
