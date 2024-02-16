@@ -112,3 +112,23 @@ section Fiber 3 {
 # Define column elements
 ## Geometry of column elements
 geomTransf Linear 1
+
+# Number of integration points along of element
+set np 5
+
+
+# Create the columns using displacement controlled beam-column elements
+#                                     tag     ndl     ndJ      nsecs     secID     transfTag
+element dispBeamColumn         1       1      2       $np      3          1
+element dispBeamColumn         2       2      3       $np      3          1
+element dispBeamColumn         3       3      4       $np      3          1
+element dispBeamColumn         4       4      5       $np      3          1
+element dispBeamColumn         5       5      6       $np      3          1
+element dispBeamColumn         6       6      7       $np      3          1
+element dispBeamColumn         7       4      8       $np      2          1
+element dispBeamColumn         8       13     9       $np      1          1
+element dispBeamColumn         9       9      10      $np      1          1
+element dispBeamColumn         10      10     11      $np      1          1
+element dispBeamColumn         11      11     12      $np      1          1
+#   zeroLengthSection          tag     ndl    ndJ      secID
+element zeroLengthSection      12      8      13       5
